@@ -1,7 +1,7 @@
 {
   "url": "https://telegram-betting-app.vercel.app",
-  "name": "Test Mini", // required
-  "iconUrl": "https://vitejs.dev/", // required
-  "termsOfUseUrl": "https://telegram-betting-app.vercel.app/terms", // optional
-  "privacyPolicyUrl": "https://telegram-betting-app.vercel.app/privacy" // optional
+  "name": "Test Mini",
+  "iconUrl": "https://vitejs.dev/",
+  "termsOfUseUrl": "https://telegram-betting-app.vercel.app/terms",
+  "privacyPolicyUrl": "https://telegram-betting-app.vercel.app/privacy"
 }
