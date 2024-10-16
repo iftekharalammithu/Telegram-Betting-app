@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Link, Route, Router, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsOfUseUrl from "./Pages/TermsOfUseUrl";
@@ -7,7 +7,11 @@ import ModalControl from "./Pages/Payments";
 
 const App = () => {
   return (
-    <div className=" flex items-center justify-center h-screen">
+    <div className=" flex flex-col  items-center justify-center h-screen">
+      <Link className="text-xl hover:text-red-300 font-bold mb-4" to="/">
+        {" "}
+        HOME
+      </Link>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/terms" element={<TermsOfUseUrl />} />

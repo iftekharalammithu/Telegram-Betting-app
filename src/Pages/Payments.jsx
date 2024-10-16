@@ -1,10 +1,48 @@
-import { useTonConnectModal, useTonWallet } from "@tonconnect/ui-react";
+import {
+  TonConnectUIContext,
+  useTonConnectModal,
+  useTonWallet,
+} from "@tonconnect/ui-react";
 import { useTonAddress } from "@tonconnect/ui-react";
+import { useContext } from "react";
+import { beginCell, toNano } from "@ton/ton";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
   const wallet = useTonWallet();
   const userFriendlyAddress = useTonAddress();
+  const tonConnectUI = useContext(TonConnectUIContext);
+
+  const body = beginCell()
+    .storeUint(0, 32) // Write 32 zero bits to indicate a text comment will follow
+    .storeStringTail("test transection ") // Write the text comment (data.id assumed to be dynamic)
+    .endCell();
+
+  const paymentRequest = {
+    messages: [
+      {
+        address: "UQDqroQ2XO6CTyrSLg_xStqvxusx_1ajmlpmC_31lmn0r9TK",
+        amount: toNano("10").toString(),
+        payload: body.toBoc().toString("base64"), // Optional: Additional data
+      },
+    ],
+    validUntil: Math.floor(Date.now() / 1000) + 360, // Expiration time in seconds
+  };
+
+  const handleTransaction = () => {
+    if (tonConnectUI) {
+      tonConnectUI
+        .sendTransaction(paymentRequest)
+        .then((transactionResult) => {
+          console.log("Transaction successful:", transactionResult);
+        })
+        .catch((error) => {
+          console.error("Transaction failed:", error);
+        });
+    } else {
+      alert("Wallet is not connected");
+    }
+  };
 
   return (
     <div>
@@ -44,6 +82,19 @@ const ModalControl = () => {
         }}
       >
         Close modal
+      </button>
+      <button
+        style={{
+          backgroundColor: "#f44536",
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+        onClick={handleTransaction}
+      >
+        Send Payment 10
       </button>
     </div>
   );
