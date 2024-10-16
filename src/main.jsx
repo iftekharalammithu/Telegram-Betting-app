@@ -4,7 +4,6 @@ import App from "./App.jsx";
 import "./index.css";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import { BrowserRouter } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,6 +12,5 @@ createRoot(document.getElementById("root")).render(
         <App />
       </BrowserRouter>
     </TonConnectUIProvider>
-    <ToastContainer></ToastContainer>
   </StrictMode>
 );

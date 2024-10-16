@@ -7,7 +7,7 @@ import { useTonAddress } from "@tonconnect/ui-react";
 import { useContext } from "react";
 import { beginCell, toNano } from "@ton/ton";
 import { Address } from "@ton/core";
-import { toast } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
@@ -36,19 +36,33 @@ const ModalControl = () => {
 
   const handleTransaction = () => {
     if (tonConnectUI) {
+      console.log("found");
       tonConnectUI
         .sendTransaction(paymentRequest)
         .then((transactionResult) => {
           console.log("Transaction successful:", transactionResult);
         })
         .catch((error) => {
-          console.error("Transaction failed:", error);
+          console.error("Transaction failed: of", error);
         });
     } else {
       console.log("wallet not connected");
-      toast.error("wallet not connected");
       alert("Wallet is not connected");
     }
+  };
+
+  const notify = () => {
+    toast.error("🦄 Wow so easy!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
 
   return (
@@ -78,7 +92,7 @@ const ModalControl = () => {
         Open modal
       </button>
       <button
-        onClick={close}
+        onClick={notify}
         style={{
           backgroundColor: "#f44336",
           color: "white",
@@ -104,6 +118,19 @@ const ModalControl = () => {
       >
         Send Payment 10
       </button>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition:Bounce
+      />
     </div>
   );
 };
