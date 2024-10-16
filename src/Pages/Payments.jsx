@@ -6,6 +6,8 @@ import {
 import { useTonAddress } from "@tonconnect/ui-react";
 import { useContext } from "react";
 import { beginCell, toNano } from "@ton/ton";
+import { Address } from "@ton/core";
+// [vite]: Rollup failed to resolve import "@ton/ton" from "/vercel/path0/src/Pages/Payments.jsx".
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
@@ -17,12 +19,15 @@ const ModalControl = () => {
     .storeUint(0, 32) // Write 32 zero bits to indicate a text comment will follow
     .storeStringTail("test transection ") // Write the text comment (data.id assumed to be dynamic)
     .endCell();
+  const destination = Address.parse(
+    "UQDqroQ2XO6CTyrSLg_xStqvxusx_1ajmlpmC_31lmn0r9TK"
+  ).toRawString();
 
   const paymentRequest = {
     messages: [
       {
-        address: "UQDqroQ2XO6CTyrSLg_xStqvxusx_1ajmlpmC_31lmn0r9TK",
-        amount: toNano("10").toString(),
+        address: destination,
+        amount: toNano("0.10").toString(),
         payload: body.toBoc().toString("base64"), // Optional: Additional data
       },
     ],
@@ -84,6 +89,7 @@ const ModalControl = () => {
         Close modal
       </button>
       <button
+        className="ml-2"
         style={{
           backgroundColor: "#f44536",
           color: "white",
