@@ -7,6 +7,7 @@ import { useTonAddress } from "@tonconnect/ui-react";
 import { useContext, useState } from "react"; // Added useState import
 import { beginCell, toNano } from "@ton/ton";
 import { Address } from "@ton/core";
+import { useNavigate } from "react-router-dom";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
@@ -59,6 +60,11 @@ const ModalControl = () => {
     setError(error); // Set error message
     setTimeout(() => setError(null), 3000); // Clear error after 4 seconds
   };
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1); // Navigate to the previous page
+  };
 
   return (
     <div>
@@ -70,6 +76,19 @@ const ModalControl = () => {
           <span>User-friendly address: {userFriendlyAddress}</span>
         </div>
       )}
+      <button
+        onClick={handleBack}
+        style={{
+          backgroundColor: "#4CAF50",
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Go Back
+      </button>
       {error && (
         <div
           className="error-popup absolute  items-center text-center"
