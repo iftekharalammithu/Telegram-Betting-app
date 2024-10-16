@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <TonConnectUIProvider manifestUrl="https://telegram-betting-app.vercel.app/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://purple-selected-toad-148.mypinata.cloud/ipfs/QmcXf3PSvRELE5TBMkYce189VNi3nqRJYQmzvaY2vwkJGH">
       <BrowserRouter>
         <App />
       </BrowserRouter>
