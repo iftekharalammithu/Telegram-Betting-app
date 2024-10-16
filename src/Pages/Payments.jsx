@@ -7,7 +7,7 @@ import { useTonAddress } from "@tonconnect/ui-react";
 import { useContext } from "react";
 import { beginCell, toNano } from "@ton/ton";
 import { Address } from "@ton/core";
-// [vite]: Rollup failed to resolve import "@ton/ton" from "/vercel/path0/src/Pages/Payments.jsx".
+import { toast } from "react-toastify";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
@@ -27,11 +27,11 @@ const ModalControl = () => {
     messages: [
       {
         address: destination,
-        amount: toNano("0.010").toString(),
+        amount: toNano("0.0050").toString(),
         payload: body.toBoc().toString("base64"), // Optional: Additional data
       },
     ],
-    validUntil: Math.floor(Date.now() / 1000) + 360, // Expiration time in seconds
+    validUntil: Math.floor(Date.now() / 1000) + 360, // This sets the expiration time for the payment request to 360 seconds (6 minutes) from the current time.
   };
 
   const handleTransaction = () => {
@@ -45,6 +45,8 @@ const ModalControl = () => {
           console.error("Transaction failed:", error);
         });
     } else {
+      console.log("wallet not connected");
+      toast.error("wallet not connected");
       alert("Wallet is not connected");
     }
   };
