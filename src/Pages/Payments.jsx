@@ -4,16 +4,16 @@ import {
   useTonWallet,
 } from "@tonconnect/ui-react";
 import { useTonAddress } from "@tonconnect/ui-react";
-import { useContext } from "react";
+import { useContext, useState } from "react"; // Added useState import
 import { beginCell, toNano } from "@ton/ton";
 import { Address } from "@ton/core";
-import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
   const wallet = useTonWallet();
   const userFriendlyAddress = useTonAddress();
   const tonConnectUI = useContext(TonConnectUIContext);
+  const [error, setError] = useState(null); // Moved state declaration here
 
   const body = beginCell()
     .storeUint(0, 32) // Write 32 zero bits to indicate a text comment will follow
@@ -52,17 +52,8 @@ const ModalControl = () => {
   };
 
   const notify = () => {
-    toast.error("🦄 Wow so easy!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
+    setError("An error occurred!"); // Set error message
+    setTimeout(() => setError(null), 3000); // Clear error after 4 seconds
   };
 
   return (
@@ -75,7 +66,22 @@ const ModalControl = () => {
           <span>User-friendly address: {userFriendlyAddress}</span>
         </div>
       )}
-
+      {error && (
+        <div
+          className="error-popup"
+          style={{
+            color: "red",
+            animation: "fadeIn 0.8s",
+            border: "1px solid red",
+            padding: "10px",
+            borderRadius: "10px",
+            margin: "10px 0",
+          }}
+        >
+          {error}
+        </div>
+      )}{" "}
+      {/* Display error message */}
       <div className="my-10">Modal state: {state?.status}</div>
       <button
         onClick={open}
@@ -118,19 +124,6 @@ const ModalControl = () => {
       >
         Send Payment 10
       </button>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition:Bounce
-      />
     </div>
   );
 };
