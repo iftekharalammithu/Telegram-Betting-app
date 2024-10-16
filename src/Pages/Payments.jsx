@@ -78,88 +78,41 @@ const ModalControl = () => {
       )}
       <button
         onClick={handleBack}
-        style={{
-          backgroundColor: "#4CAF50",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
+        className="bg-green-500 text-white py-2 px-4 rounded cursor-pointer"
       >
         Go Back
       </button>
       {error && (
-        <div
-          className="error-popup absolute  items-center text-center"
-          style={{
-            color: "red",
-            animation: "fadeIn 0.8s",
-            border: "1px solid red",
-            padding: "10px",
-            borderRadius: "10px",
-            margin: "10px 0",
-          }}
-        >
+        <div className="error-popup absolute items-center text-center text-red-500 border border-red-500 p-2 rounded my-2 animate-fadeIn">
           {error}
         </div>
       )}{" "}
       {/* Display error message */}
       <div className="my-10">Modal state: {state?.status}</div>
-      <div className=" gap-3 flex flex-row">
+      <div className="gap-3 flex flex-row">
         <button
           onClick={open}
-          style={{
-            backgroundColor: "#4CAF50",
-            color: "white",
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            marginRight: "10px",
-          }}
+          className="bg-green-500 text-white py-2 px-4 rounded cursor-pointer mr-2"
         >
           Open modal
         </button>
         <button
           onClick={close}
-          style={{
-            backgroundColor: "#f44336",
-            color: "white",
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          className="bg-red-500 text-white py-2 px-4 rounded cursor-pointer"
         >
           Close modal
         </button>
         {wallet && (
           <button
             onClick={handleDisconnect}
-            style={{
-              backgroundColor: "#f44336",
-              color: "white",
-              padding: "10px 20px",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
+            className="bg-red-500 text-white py-2 px-4 rounded cursor-pointer"
           >
             Disconnect Wallet
           </button>
         )}
 
         <button
-          className="ml-2"
-          style={{
-            backgroundColor: "#f44536",
-            color: "white",
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          className="bg-red-600 text-white py-2 px-4 rounded cursor-pointer ml-2"
           onClick={handleTransaction}
         >
           Send Payment 10
