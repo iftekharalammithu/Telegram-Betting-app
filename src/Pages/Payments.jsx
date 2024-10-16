@@ -67,7 +67,7 @@ const ModalControl = () => {
   };
 
   return (
-    <div className="max-w-[360px] bdr ">
+    <div className="max-w-[360px] w-full bdr ">
       {wallet && (
         <div className="break-words">
           <span>Connected wallet: {wallet.name}</span>
@@ -92,7 +92,7 @@ const ModalControl = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           onClick={open}
-          className="bg-green-500 text-white py-2 px-4 rounded cursor-pointer mr-2"
+          className="bg-green-500 text-white py-2  rounded cursor-pointer "
         >
           Open modal
         </button>
@@ -112,7 +112,7 @@ const ModalControl = () => {
         )}
 
         <button
-          className="bg-red-600 text-white py-2 px-4 rounded cursor-pointer ml-2"
+          className="bg-red-600 text-white py-2 px-4 rounded cursor-pointer "
           onClick={handleTransaction}
         >
           Send Payment 10
