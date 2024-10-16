@@ -89,7 +89,7 @@ const ModalControl = () => {
       )}{" "}
       {/* Display error message */}
       <div className="my-10">Modal state: {state?.status}</div>
-      <div className="gap-3 flex flex-row">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
           onClick={open}
           className="bg-green-500 text-white py-2 px-4 rounded cursor-pointer mr-2"
