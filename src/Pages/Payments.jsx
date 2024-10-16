@@ -72,7 +72,7 @@ const ModalControl = () => {
       )}
       {error && (
         <div
-          className="error-popup items-center text-center"
+          className="error-popup absolute  items-center text-center"
           style={{
             color: "red",
             animation: "fadeIn 0.8s",
