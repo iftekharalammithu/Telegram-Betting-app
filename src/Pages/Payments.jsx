@@ -67,7 +67,7 @@ const ModalControl = () => {
   };
 
   return (
-    <div>
+    <div className="mx-4">
       {wallet && (
         <div>
           <span>Connected wallet: {wallet.name}</span>
