@@ -35,26 +35,28 @@ const ModalControl = () => {
   };
 
   const handleTransaction = () => {
-    if (tonConnectUI) {
-      console.log(tonConnectUI);
+    if (tonConnectUI.connector._wallet) {
+      console.log(tonConnectUI.connector._wallet);
       tonConnectUI
         .sendTransaction(paymentRequest)
         .then((transactionResult) => {
           console.log("Transaction successful:", transactionResult);
         })
         .catch((error) => {
-          console.error("Transaction failed: of", error);
-          notify();
+          console.error("Transaction failed: ", error);
+          notify("Transaction failed Try Again! ");
         });
     } else {
       console.log("wallet not connected");
-      notify();
-      alert("Wallet is not connected");
+      notify("Wallet is not connected");
+      // alert("Wallet is not connected");
     }
   };
-
-  const notify = () => {
-    setError("Wallet Not Connected!"); // Set error message
+  const handleDisconnect = () => {
+    tonConnectUI.disconnect(); // Disconnect the wallet
+  };
+  const notify = (error) => {
+    setError(error); // Set error message
     setTimeout(() => setError(null), 3000); // Clear error after 4 seconds
   };
 
@@ -85,47 +87,65 @@ const ModalControl = () => {
       )}{" "}
       {/* Display error message */}
       <div className="my-10">Modal state: {state?.status}</div>
-      <button
-        onClick={open}
-        style={{
-          backgroundColor: "#4CAF50",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          marginRight: "10px",
-        }}
-      >
-        Open modal
-      </button>
-      <button
-        onClick={close}
-        style={{
-          backgroundColor: "#f44336",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Close modal
-      </button>
-      <button
-        className="ml-2"
-        style={{
-          backgroundColor: "#f44536",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-        onClick={handleTransaction}
-      >
-        Send Payment 10
-      </button>
+      <div className=" gap-3 flex flex-row">
+        <button
+          onClick={open}
+          style={{
+            backgroundColor: "#4CAF50",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            marginRight: "10px",
+          }}
+        >
+          Open modal
+        </button>
+        <button
+          onClick={close}
+          style={{
+            backgroundColor: "#f44336",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Close modal
+        </button>
+        {wallet && (
+          <button
+            onClick={handleDisconnect}
+            style={{
+              backgroundColor: "#f44336",
+              color: "white",
+              padding: "10px 20px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Disconnect Wallet
+          </button>
+        )}
+
+        <button
+          className="ml-2"
+          style={{
+            backgroundColor: "#f44536",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={handleTransaction}
+        >
+          Send Payment 10
+        </button>
+      </div>
     </div>
   );
 };
