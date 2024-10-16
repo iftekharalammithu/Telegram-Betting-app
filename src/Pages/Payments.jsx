@@ -27,7 +27,7 @@ const ModalControl = () => {
     messages: [
       {
         address: destination,
-        amount: toNano("0.10").toString(),
+        amount: toNano("0.010").toString(),
         payload: body.toBoc().toString("base64"), // Optional: Additional data
       },
     ],
