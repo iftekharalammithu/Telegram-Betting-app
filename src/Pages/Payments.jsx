@@ -1,8 +1,10 @@
 import { useTonConnectModal, useTonWallet } from "@tonconnect/ui-react";
+import { useTonAddress } from "@tonconnect/ui-react";
 
 const ModalControl = () => {
   const { state, open, close } = useTonConnectModal();
   const wallet = useTonWallet();
+  const userFriendlyAddress = useTonAddress();
 
   return (
     <div>
@@ -10,6 +12,8 @@ const ModalControl = () => {
         <div>
           <span>Connected wallet: {wallet.name}</span>
           <span>Device: {wallet.device.appName}</span>
+          <span>Address: {wallet.address}</span>
+          <span>User-friendly address: {userFriendlyAddress}</span>
         </div>
       )}
 
