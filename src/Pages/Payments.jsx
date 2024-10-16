@@ -36,7 +36,7 @@ const ModalControl = () => {
 
   const handleTransaction = () => {
     if (tonConnectUI) {
-      console.log("found");
+      console.log(tonConnectUI);
       tonConnectUI
         .sendTransaction(paymentRequest)
         .then((transactionResult) => {
@@ -44,15 +44,17 @@ const ModalControl = () => {
         })
         .catch((error) => {
           console.error("Transaction failed: of", error);
+          notify();
         });
     } else {
       console.log("wallet not connected");
+      notify();
       alert("Wallet is not connected");
     }
   };
 
   const notify = () => {
-    setError("An error occurred!"); // Set error message
+    setError("Wallet Not Connected!"); // Set error message
     setTimeout(() => setError(null), 3000); // Clear error after 4 seconds
   };
 
@@ -68,7 +70,7 @@ const ModalControl = () => {
       )}
       {error && (
         <div
-          className="error-popup"
+          className="error-popup items-center text-center"
           style={{
             color: "red",
             animation: "fadeIn 0.8s",
@@ -98,7 +100,7 @@ const ModalControl = () => {
         Open modal
       </button>
       <button
-        onClick={notify}
+        onClick={close}
         style={{
           backgroundColor: "#f44336",
           color: "white",
