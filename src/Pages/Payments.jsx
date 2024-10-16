@@ -67,9 +67,9 @@ const ModalControl = () => {
   };
 
   return (
-    <div className="mx-4">
+    <div className="max-w-[360px] bdr ">
       {wallet && (
-        <div>
+        <div className="break-words">
           <span>Connected wallet: {wallet.name}</span>
           <span>Device: {wallet.device.appName}</span>
           <span>Address: {wallet.address}</span>
