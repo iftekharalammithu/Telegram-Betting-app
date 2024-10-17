@@ -25,6 +25,7 @@ const Refers = () => {
     navigator.clipboard.writeText(inviteLink);
     notify("Copied!");
   };
+
   const [copy, setcopy] = useState("");
 
   const notify = (message) => {
