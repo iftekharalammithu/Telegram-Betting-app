@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
 import TermsOfUseUrl from "./Pages/TermsOfUseUrl";
 import ModalControl from "./Pages/Payments";
+import Refers from "./Pages/Refers";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/terms" element={<TermsOfUseUrl />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/payment" element={<ModalControl />}></Route>
+        <Route path="/referals" element={<Refers />}></Route>
         <Route path="*" element={<Home />}></Route>
       </Routes>
     </div>

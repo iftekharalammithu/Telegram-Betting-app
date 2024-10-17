@@ -34,6 +34,10 @@ const Home = () => {
         {" "}
         Payment
       </Link>
+      <Link className="text-3xl mt-20 flex text-yellow-400" to="/referals">
+        {" "}
+        Referals
+      </Link>
     </div>
   );
 };
