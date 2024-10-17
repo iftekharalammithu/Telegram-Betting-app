@@ -23,7 +23,13 @@ const Refers = () => {
   const handleCopyLink = () => {
     const inviteLink = `${INVITE_URL}?startapp=${userId}`;
     navigator.clipboard.writeText(inviteLink);
-    alert("Invite link copied to clipboard!");
+    notify("Copied!");
+  };
+  const [copy, setcopy] = useState("");
+
+  const notify = (message) => {
+    setcopy(message); // Set error message
+    setTimeout(() => setcopy(null), 2000); // Clear error after 4 seconds
   };
 
   return (
@@ -38,6 +44,11 @@ const Refers = () => {
         >
           Copy Invite Link
         </button>
+        {copy && (
+          <div className=" items-center absolute bdr mt-7 text-center text-red-500 p-2 rounded  animate-fadeIn">
+            {copy}
+          </div>
+        )}
       </div>
     </div>
   );
