@@ -19,7 +19,7 @@ const Refers = () => {
     initWebApp();
   }, []);
   return (
-    <div>
+    <div className="mx-4 flex flex-col items-center justify-center break-words">
       <h1>{initData}</h1>
       <h1>{userId}</h1>
       <h1>{startParam}</h1>
