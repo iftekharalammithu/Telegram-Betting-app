@@ -5,6 +5,7 @@ const Refers = () => {
   const [userId, setUserId] = useState("");
   const [startParam, setStartParam] = useState("");
   const INVITE_URL = "http://t.me/Mini00_test_bot/Testmini";
+  const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
     const initWebApp = async () => {
@@ -14,6 +15,8 @@ const Refers = () => {
         setInitData(WebApp.initData);
         setUserId(WebApp.initDataUnsafe.user?.id.toString() || "");
         setStartParam(WebApp.initDataUnsafe.start_param || "");
+        setUserProfile(WebApp.initDataUnsafe.user || "");
+        console.log(userProfile);
       }
     };
 
@@ -38,6 +41,12 @@ const Refers = () => {
       <h1>Init Data :{initData}</h1>
       <h1>User ID: {userId}</h1>
       <h1>Start Param: {startParam}</h1>
+      <img
+        src={userProfile.photo_url}
+        alt="User Profile"
+        width={100}
+        height={100}
+      />
       <div className="flex flex-col space-y-4">
         <button
           onClick={handleCopyLink}
