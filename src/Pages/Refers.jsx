@@ -67,7 +67,7 @@ const Refers = () => {
         )}
       </div>
       <div>
-        <img className="h-40 w-40  " src={basket} alt="" />
+        <img className="h-40 w-40 animate-spin  " src={basket} alt="" />
       </div>
     </div>
   );
