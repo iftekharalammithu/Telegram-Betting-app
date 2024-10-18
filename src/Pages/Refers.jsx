@@ -65,6 +65,13 @@ const Refers = () => {
           </div>
         )}
       </div>
+      <div>
+        <img
+          className="h-40 w-40 animate-[move-left-right_2s_ease-in-out_infinite] "
+          src="public/basket2.png"
+          alt=""
+        />
+      </div>
     </div>
   );
 };

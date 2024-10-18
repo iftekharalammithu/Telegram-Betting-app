@@ -43,7 +43,8 @@ const Home = () => {
       <button className="bg-gradient-to-r from-[#7ed8f7] via-[#f17de7]  to-[#f8b86d] text-white font-semibold mx-4 py-2 w-[90%]  rounded-full shadow-lg hover:opacity-90 transition-opacity duration-300">
         Next
       </button>
-      <div className="h-screen flex-col w-screen bg-[#1a2726] flex items-center justify-center">
+
+      <div className="h-screen mt-10 flex-col w-screen bg-[#1a2726] flex items-center justify-center">
         <div className="mt-9 flex items-center justify-center w-fit p-5 rounded-3xl bg-slate-300 shadow-[5px_12px_25px_rgba(0,0,0,0.7)] relative">
           {/* Inset shadow */}
           <div className="absolute inset-0 rounded-3xl  shadow-[inset_10px_10px_20px_rgba(0,0,0,0.3)] pointer-events-none"></div>
