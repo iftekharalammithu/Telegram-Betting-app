@@ -36,17 +36,22 @@ const Refers = () => {
     setTimeout(() => setcopy(null), 2000); // Clear error after 4 seconds
   };
 
+  const handleSharelink = () => {
+    const inviteLink = `${INVITE_URL}?startapp=${userId}`;
+    window.Telegram.WebApp.openTelegramLink(inviteLink);
+  };
+
   return (
     <div className="mx-4 gap-5 flex flex-col items-center justify-center break-words">
       <h1>Init Data :{initData}</h1>
       <h1>User ID: {userId}</h1>
       <h1>Start Param: {startParam}</h1>
-      {/* <img
-        src={userProfile.photo_url}
-        alt="User Profile"
-        width={100}
-        height={100}
-      /> */}
+      <button
+        onClick={handleSharelink}
+        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Share Links
+      </button>
       <div className="flex flex-col space-y-4">
         <button
           onClick={handleCopyLink}
