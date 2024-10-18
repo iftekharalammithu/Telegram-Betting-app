@@ -68,7 +68,7 @@ const Refers = () => {
       <div>
         <img
           className="h-40 w-40 animate-[move-left-right_2s_ease-in-out_infinite] "
-          src="src\assets\basket2.png"
+          src="./src\assets\basket2.png"
           alt=""
         />
       </div>
