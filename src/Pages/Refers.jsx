@@ -16,7 +16,7 @@ const Refers = () => {
         setUserId(WebApp.initDataUnsafe.user?.id.toString() || "");
         setStartParam(WebApp.initDataUnsafe.start_param || "");
         setUserProfile(WebApp.initDataUnsafe.user || "");
-        console.log(userProfile);
+        console.log(WebApp.initDataUnsafe.user);
       }
     };
 
@@ -41,12 +41,12 @@ const Refers = () => {
       <h1>Init Data :{initData}</h1>
       <h1>User ID: {userId}</h1>
       <h1>Start Param: {startParam}</h1>
-      <img
+      {/* <img
         src={userProfile.photo_url}
         alt="User Profile"
         width={100}
         height={100}
-      />
+      /> */}
       <div className="flex flex-col space-y-4">
         <button
           onClick={handleCopyLink}
